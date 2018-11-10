@@ -52,32 +52,34 @@ public class Person {
         this.year = year;
     }
    
-    public void calcuteYear(int year){
+    public int calcuteYear(int year){
         int age=0;
-        if (calendar.get(Calendar.YEAR)>=year){
+        operation.setOperand2(year);
         age = operation.rest(calendar.get(Calendar.YEAR),year);    
-            System.out.println("You have : "+year+" year olds");
-        } else {
-            System.out.println("Usted no ha nacido aun");
-        }   
+            return age;
         }
+    public GregorianCalendar cal(int year,int month,int day){
+        calendar.set(year, month, day);
+        return calendar;
+    }
     
-    public void calculateMonth(int month){
-        int ageMonth;
-        if(calendar.get(Calendar.MONTH)>= month){
-        ageMonth = operation.rest(calendar.get(Calendar.MONTH), month);    
-            System.out.println("Meses cumplidos: "+(ageMonth+1));
+    public int calculateMonth(int month){
+        int ageMonth=0;
+        ageMonth = operation.rest(calendar.get(Calendar.MONTH), month);
+            if (ageMonth<0){
+                ageMonth=ageMonth*(-1);
+            }
+            ageMonth=ageMonth+1;
+            return ageMonth;
         }
-        }
-    
-    
-    public void calculateDay(int day){
-        int ageDay;
+     
+    public int calculateDay(int day){
+        int ageDay=0;
         ageDay= operation.rest(calendar.get(Calendar.DAY_OF_MONTH),day);
         if(ageDay < 0){
             ageDay = ageDay + 30;
         }
-        System.out.println("Dias cumplidos: "+ageDay);
+        return ageDay;
     }
     
 }
