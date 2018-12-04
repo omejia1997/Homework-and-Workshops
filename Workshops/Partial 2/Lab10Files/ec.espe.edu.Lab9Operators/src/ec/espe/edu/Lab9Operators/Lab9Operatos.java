@@ -75,7 +75,7 @@ public class Lab9Operatos {
         File archiv = new File("Edad.csv");
         Files file = new Files();
         file.writter(archiv, bhd);
-        file.reader();
+        file.reader(archiv);
                 
     }
     

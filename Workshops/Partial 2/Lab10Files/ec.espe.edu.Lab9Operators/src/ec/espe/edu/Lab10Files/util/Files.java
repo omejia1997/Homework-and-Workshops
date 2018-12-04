@@ -37,10 +37,10 @@ public class Files {
         }
     } 
     
-       public void reader(){
+       public void reader(File archive){
         String leer;
         try{
-        FileReader fileReader = new FileReader("Edad.csv");
+        FileReader fileReader = new FileReader(archive);
         BufferedReader entrada = new BufferedReader(fileReader);
         leer = entrada.readLine();
         while(leer!=null){
