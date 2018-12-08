@@ -52,34 +52,54 @@ public class Person {
         this.year = year;
     }
    
-    public int calcuteYear(int year){
-        int age=0;
-        operation.setOperand2(year);
-        age = operation.rest(calendar.get(Calendar.YEAR),year);    
-            return age;
-        }
     public GregorianCalendar cal(int year,int month,int day){
         calendar.set(year, month, day);
         return calendar;
     }
     
-    public int calculateMonth(int month){
-        int ageMonth=0;
-        ageMonth = operation.rest(calendar.get(Calendar.MONTH), month);
-            if (ageMonth<0){
-                ageMonth=ageMonth*(-1);
-            }
-            ageMonth=ageMonth+1;
-            return ageMonth;
-        }
-     
-    public int calculateDay(int day){
-        int ageDay=0;
-        ageDay= operation.rest(calendar.get(Calendar.DAY_OF_MONTH),day);
-        if(ageDay < 0){
-            ageDay = ageDay + 30;
-        }
-        return ageDay;
-    }
-    
+    	public int calculateYears(int day, int month, int year) {
+		GregorianCalendar date = new GregorianCalendar(year, month - 1, day);
+		int cont = 0;
+		GregorianCalendar actualDate = new GregorianCalendar();
+		while ((date.get(Calendar.YEAR) != actualDate.get(Calendar.YEAR))) {
+			date.add(Calendar.YEAR, 1);
+			cont++;
+		}
+		return cont;
+	}
+
+	public int calculateDays(int day, int month, int year) {
+		GregorianCalendar date = new GregorianCalendar(year, month - 1, day);
+		int cont = 0;
+		GregorianCalendar actualDate = new GregorianCalendar();
+		while (true) {
+			if ((date.get(Calendar.DAY_OF_MONTH) == actualDate
+					.get(Calendar.DAY_OF_MONTH))
+					&& (date.get(Calendar.MONTH) == actualDate
+							.get(Calendar.MONTH))
+					&& (date.get(Calendar.YEAR) == actualDate
+							.get(Calendar.YEAR))) {
+				break;
+			}
+			date.add(Calendar.DAY_OF_MONTH, 1);
+			cont++;
+		}
+		return cont;
+	}
+
+	public int CalculateMonth(int day, int month, int year) {
+		GregorianCalendar Date = new GregorianCalendar(year, month - 1, day);
+		int cont = 0;
+		GregorianCalendar actualDate = new GregorianCalendar();
+		while (true) {
+			if ((Date.get(Calendar.MONTH) == actualDate.get(Calendar.MONTH))
+					&& (Date.get(Calendar.YEAR) == actualDate
+							.get(Calendar.YEAR))) {
+				break;
+			}
+			Date.add(Calendar.MONTH, 1);
+			cont++;
+		}
+		return cont;
+	}
 }

@@ -10,6 +10,9 @@ import java.io.File;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -22,6 +25,15 @@ public class Lab9Operatos {
      */
     public static void main(String[] args) {
         
+// 01/01/2000
+DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+LocalDate fechaNac = LocalDate.parse("08/10/1997", fmt);
+LocalDate ahora = LocalDate.now();
+
+Period periodo = Period.between(fechaNac, ahora);
+System.out.printf("Tu edad es: %s años, %s meses y %s días",
+                    periodo.getYears(), periodo.getMonths(), periodo.getDays());
+
         Scanner input = new Scanner(System.in);
         String name;
         String bhd;
@@ -65,17 +77,16 @@ public class Lab9Operatos {
         
         Person person = new Person();
         System.out.println("Your name is: "+name);
-        System.out.println(person.calcuteYear(year));
-        year=person.calcuteYear(year);
-        day=person.calculateDay(day);
-        month=person.calculateMonth(month);
-        calendar = person.cal(year,day,month);
+        int year2 = person.calculateYears(day, month, year);
+        int day2 = person.calculateDays(day, month, year);
+        int month2 =person.CalculateMonth(day, month, year);
         //System.out.println("Yor age is: "+calendar.get(Calendar.YEAR)+" feat "+(calendar.get(Calendar.MONTH))+" months and "+calendar.get(Calendar.DATE)+" days");
-        bhd = name +  " ; "+ year + " ; " +month +" ; " + day;
+        bhd = name +  " ; "+ year2 + " ; " +month2 +" ; " + day2;
         File archiv = new File("Edad.csv");
         Files file = new Files();
         file.writter(archiv, bhd);
         file.reader(archiv);
+        
                 
     }
     
