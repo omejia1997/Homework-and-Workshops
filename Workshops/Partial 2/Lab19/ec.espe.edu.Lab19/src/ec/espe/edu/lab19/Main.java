@@ -20,7 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
         Figure figure=new Triangulo(1,2);
-        BasicOperation basic = new BasicOperation(1.2f, 2.4f, 1.2f);
+        BasicOperation basic = new BasicOperation(1.2f, 2.4f);
         float localArea=figure.computerArea();
         System.out.println("The are is "+figure.computerArea());
         System.out.println("The add is : "+basic.add());

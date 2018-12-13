@@ -75,11 +75,18 @@ private float totalExpenses;
     float taxBase=anualIncomes-totalExpenses;
     return taxBase;
     }
+    /**
+     * This method calculate the impuest of the Rent
+     * @param taxBase This parameter receive the incomes
+     * @return the Tax of the Rent by 2018 
+     */
     
     public float CalculateTotalToPay(float taxBase){
         float calculate=0;
         float pay = 0;
-        if((taxBase>0) && (taxBase<= 11270)){
+        if((taxBase<0)){
+           pay=-1; 
+        }else if((taxBase>0) && (taxBase<= 11270)){
         pay=0;
         }else if((taxBase>11270) && (taxBase<= 14360)){
         calculate = ((taxBase-11270)*5)/100;
