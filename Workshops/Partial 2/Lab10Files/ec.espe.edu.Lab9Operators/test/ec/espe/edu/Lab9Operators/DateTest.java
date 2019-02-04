@@ -41,7 +41,7 @@ public class DateTest {
      * Test of CalculateYear method, of class Date.
      */
     @Test
-    public void testCalculateYear() {
+    public void testCalculateYear1() {
         System.out.println("CalculateYear");
         int age = 1997;
         int mes = 8;
@@ -156,7 +156,8 @@ public class DateTest {
         System.out.println("expected Result: "+expResult+" result: "+result+ "succesfull"); 
     }
     @Test
-    public void testCalculateYear10() throws Exception {
+    
+    public void testCalculateYear10()  {
         System.out.println("CalculateYear");
         int age = 2030;
         int mes = 12;
@@ -167,5 +168,6 @@ public class DateTest {
         assertEquals(expResult, result);
         System.out.println("expected Result: "+expResult+" result: "+result+ "succesfull"); 
     }
+    
     
 }
